@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Management.Automation;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace MultiThreadTaskRunner
@@ -10,18 +7,20 @@ namespace MultiThreadTaskRunner
     [Cmdlet(VerbsCommon.New, "MultiTaskJob")]
     public class RunTask : Cmdlet
     {
-        [Parameter(Position = 0)]
+        [Parameter(Position = 0,HelpMessage ="请指定要执行的PowerShell代码块",Mandatory =true)]
         public ScriptBlock Block { get; set; }
 
-        [Parameter(Position = 1)]
-        public int ThreadCount { get; set; }
+        [Parameter(Position = 1, HelpMessage = "请指定要同时运行的线程数，这个取决于你当前计算机的硬件配置，一般建议的数量是CPU数量。默认为4")]
+        public int ThreadCount { get; set; } = 4;
 
-        [Parameter(Position = 2)]
+        [Parameter(Position = 2,HelpMessage ="请指定要执行的源，通常指的是一个数据集合。")]
         public IEnumerable<object> Source { get; set; }
 
         protected override void ProcessRecord()
         {
-            Parallel.ForEach(Source, (obj) =>
+            Parallel.ForEach(Source,new ParallelOptions() {
+                MaxDegreeOfParallelism = ThreadCount
+            }, (obj) =>
             {
                 Block.Invoke(obj);
             });
