@@ -4,9 +4,13 @@ using System.Threading.Tasks;
 
 namespace MultiThreadTaskRunner
 {
-    [Cmdlet(VerbsCommon.New, "MultiTaskJob")]
+    /// <summary>
+    /// 这是一个多线程执行脚本的工具
+    /// </summary>
+    [Cmdlet(VerbsCommon.New, "MultiTaskJob",HelpUri = "https://github.com/chenxizhang/MultiThreadTaskRunner")]
     public class RunTask : Cmdlet
     {
+
         [Parameter(Position = 0,HelpMessage ="请指定要执行的PowerShell代码块",Mandatory =true)]
         public ScriptBlock Block { get; set; }
 
@@ -16,6 +20,7 @@ namespace MultiThreadTaskRunner
         [Parameter(Position = 2,HelpMessage ="请指定要执行的源，通常指的是一个数据集合。")]
         public IEnumerable<object> Source { get; set; }
 
+        
         protected override void ProcessRecord()
         {
             Parallel.ForEach(Source,new ParallelOptions() {
