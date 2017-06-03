@@ -23,6 +23,10 @@ Install-Module -Name MultiThreadTaskRunner
 ```
 Get-Help New-MultiTaskJob -Full
 ```
+你还可以通过下面的命令打开在线帮助
+```
+Get-Help New-MultiTaskJob -Online
+```
 
 2. 准备一个用来测试的脚本块
 
