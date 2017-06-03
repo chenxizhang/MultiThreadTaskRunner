@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml">
+  <command:command
+  xmlns:maml="http://schemas.microsoft.com/maml/2004/10"
+  xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10"
+  xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>New-MultiTaskJob</command:name>
+      <command:verb>New</command:verb>
+      <command:noun>MultiTaskJob</command:noun>
+      <maml:description>
+        <maml:para>
+          使用多线程的方式运行指定脚本
+        </maml:para>
+      </maml:description>
+    </command:details>
+
+    <maml:description>
+      这个组件用来使用多线程的方式执行指定脚本
+    </maml:description>
+    <command:syntax>
+      
+    </command:syntax>
+    <command:parameters>
+      <!--Add parameter information here-->
+    </command:parameters>
+    <command:inputTypes>
+      <!--Add input type information here-->
+    </command:inputTypes>
+    <command:returnValues>
+      <!--Add return value information here-->
+    </command:returnValues>
+    <maml:alertSet>
+      <!--Add Note information here-->
+    </maml:alertSet>
+    <command:examples>
+      <!--Add cmdlet examples here-->
+    </command:examples>
+    <maml:relatedLinks>
+      <!--Add links to related content here-->
+    </maml:relatedLinks>
+  </command:command>
+
+</helpItems>
